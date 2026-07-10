@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-a53d7j8z5&vxg4#e1)$7t&p9oytf%1rcpogz8)1$*dp*o6k!v*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'petshop-fdm2.onrender.com',
+    '127.0.0.1:8000'
+]
 
 
 # Application definition
