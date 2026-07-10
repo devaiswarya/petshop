@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +26,7 @@ SECRET_KEY = 'django-insecure-a53d7j8z5&vxg4#e1)$7t&p9oytf%1rcpogz8)1$*dp*o6k!v*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'petshop-fdm2.onrender.com',
-    '127.0.0.1:8000'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -43,7 +41,7 @@ INSTALLED_APPS = [
     'category',
     'products',
     'user',
-    # 'cart',
+    'cart',
     'corsheaders',
     'rest_framework',
 ]
@@ -104,6 +102,9 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

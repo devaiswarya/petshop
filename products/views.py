@@ -15,7 +15,7 @@ def create_product(request):
 @api_view(['GET'])
 def fetch_product(request):
     value=Products.objects.all()
-    result=ProductSerializer(value,many=True)
+    result=ProductSerializer(value,many=True,context={'request':request})
     return Response({'message':'product fetched successfully','data':result.data},status=status.HTTP_200_OK)
 
 @api_view(['GET'])
@@ -24,13 +24,13 @@ def get_product(request):
     value=Products.objects.all()
     if category_id:
         value=value.filter(category_id=category_id)
-    result=ProductSerializer(value,many=True)
+    result=ProductSerializer(value,many=True,context={'request':request})
     return Response({'message':'product fetched successfully','data':result.data},status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def product_one(request,pk):
     value=Products.objects.get(pk=pk)
-    result=ProductSerializer(value)
+    result=ProductSerializer(value,context={'request':request})
     return Response({'message':'product fetched successfully','data':result.data},status=status.HTTP_200_OK)
 
 @api_view(['PUT'])
