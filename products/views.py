@@ -47,3 +47,9 @@ def delete_product(request,pk):
     value=Products.objects.get(pk=pk)
     value.delete()
     return Response({'message':'product deleted successfully'},status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def new_arrival(request):
+    value=Products.objects.order_by('-created_at')[:4]
+    serializer=ProductSerializer(value,many=True,context={'request':request})
+    return Response({'message':'New Arrival fetched successfully','data':serializer.data},status=status.HTTP_200_OK)

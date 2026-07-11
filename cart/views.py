@@ -16,7 +16,6 @@ def create_cartproduct(request):
         return Response({'message':'product added to cart successfully','data':serializer.data},status=status.HTTP_201_CREATED)
     return Response({'message':serializer.errors},status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def fetch_userproduct(request):
@@ -38,11 +37,9 @@ def update_cart(request,pk):
     serializer=CartSerializer(cart)
     return Response({'messsage':'Cart Updated Successfully','data':serializer.data},status=status.HTTP_201_CREATED)
 
-
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_cartproduct(request,pk):
     value=Cart.objects.get(pk=pk,user=request.user.id)
     value.delete()
     return Response({'message':'Cart product deleted successfully'},status=status.HTTP_204_NO_CONTENT)
-
